@@ -7,25 +7,41 @@ const mobilemenu = document.querySelector('.mobile-menu');
 const shopping_cart = document.querySelector('.shopping_cart');
 const product_detail = document.querySelector('.product-detail')
 const carsContainer = document.querySelector('.cards-container')
+const producto_detalle = document.querySelector('.product-details')
+const buttonclose = document.querySelector('.close')
+
 
 
 menu.addEventListener('click', vistatemporal);
 mobileiconmenu.addEventListener("click", vistatemporal2);
 shopping_cart.addEventListener('click', vistatemporal3);
+buttonclose.addEventListener('click', closeWindows)
 
 function vistatemporal() {
     menu2.classList.toggle('vista')
     mobilemenu.classList.add('vista')
+    producto_detalle.classList.add('vista')
+    product_detail.classList.add('vista')
 }
 
 function vistatemporal2(){
     mobilemenu.classList.toggle('vista')
     product_detail.classList.add('vista')
+    producto_detalle.classList.add('vista')
 }
 
 function vistatemporal3(){
     product_detail.classList.toggle('vista')
     mobilemenu.classList.add('vista')
+    menu2.classList.add('vista')
+}
+function openproducto() {
+    producto_detalle.classList.remove('vista')
+    menu2.classList.add('vista')
+}
+function closeWindows() {
+    console.log('hola me escucha')
+    producto_detalle.classList.add('vista')
 }
 
 const listaProductos = []
@@ -63,6 +79,7 @@ function productosPag(arr) {
     
         const imgO = document.createElement('img');
         imgO.setAttribute('src', productos.imagen);
+        imgO.addEventListener('click', openproducto);
     
         const infoproducto = document.createElement('div');
         infoproducto.classList.add('product-info');
